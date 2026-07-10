@@ -1,0 +1,283 @@
+{
+  "source_bsp": "source/de_dust2_winter/de_dust2_winter.bsp",
+  "source_extracted_dir": "build/de_dust2_winter/extracted",
+  "coordinate_transform": "source [x,y,z] -> flat js [x,groundY,z/sourceY]",
+  "note": "All vertical map variation is flattened. Nav mode uses nav areas for floors and boundary walls around the walkable footprint. Ramps and ladders are omitted. Props are omitted unless --include-assets is set, then approximated as box solids.",
+  "parameters": {
+    "scale": 1.0,
+    "color_mode": "auto",
+    "ground_y": 128.0,
+    "floor_thickness": 32.0,
+    "blocker_height": 160.0,
+    "kill_y_below_ground": 64.0,
+    "roof_enabled": false,
+    "roof_height": 160.0,
+    "roof_thickness": 32.0,
+    "roof_padding": 0.0,
+    "floor_cell_size": 192,
+    "blocker_cell_size": 128,
+    "nav_cell_size": 96,
+    "nav_floor_mode": "grid",
+    "nav_snap_size": 64,
+    "boundary_wall_thickness": 32.0,
+    "min_wall_length": 64.0,
+    "containment_seal_walls_enabled": true,
+    "containment_seal_grid_size": 64.0,
+    "containment_seal_edge_depth": 16.0,
+    "containment_seal_wall_thickness": 16.0,
+    "min_floor_area": 2048.0,
+    "min_wall_area": 256.0,
+    "min_wall_height": 80.0,
+    "wall_expand": 24.0,
+    "blockers_enabled": true,
+    "boundary_walls_enabled": true,
+    "perimeter_walls_enabled": false,
+    "perimeter_padding": 192.0,
+    "perimeter_thickness": 192.0,
+    "flat_source": "nav",
+    "assets_enabled": false,
+    "asset_source": "both",
+    "asset_density": "medium",
+    "asset_types": [
+      "crate"
+    ],
+    "asset_bounds": "auto",
+    "asset_floor_tolerance": 64.0,
+    "asset_height_tolerance": 96.0,
+    "asset_height_search_distance": 128.0,
+    "static_asset_limit": 120,
+    "spawn_clearance": 48.0,
+    "spawn_wall_clearance": 16.0,
+    "player_radius": 32.0,
+    "protect_nav_connectivity": true,
+    "max_asset_nav_cells": 6,
+    "include_spawn_yaw": false
+  },
+  "output_counts": {
+    "floor_rects": 68,
+    "blocker_rects": 182,
+    "perimeter_wall_rects": 0,
+    "containment_seal_wall_rects": 40,
+    "roof_rects": 0,
+    "blocker_rects_removed_for_spawn_clearance": 0,
+    "perimeter_wall_rects_removed_for_spawn_clearance": 0,
+    "solids": 290,
+    "asset_solids": 0,
+    "ramps": 0,
+    "t_spawns": 20,
+    "ct_spawns": 20,
+    "bombsites": 2,
+    "ladders": 0,
+    "protected_nav_cells": 38,
+    "asset_blocked_nav_cells": 0
+  },
+  "spawn_yaws": {
+    "t": [
+      159,
+      10,
+      356,
+      0,
+      140,
+      140,
+      156,
+      140,
+      356,
+      0,
+      356,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      356,
+      356,
+      156
+    ],
+    "ct": [
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      180,
+      180,
+      0,
+      0,
+      222,
+      222,
+      324,
+      324
+    ]
+  },
+  "colors": {
+    "palette": {
+      "floor": 11312258,
+      "wall": 11442036,
+      "roof": 9074525,
+      "crate": 9265209,
+      "pillar": 8225400,
+      "ramp": 10125414
+    },
+    "hex": {
+      "floor": "#ac9c82",
+      "wall": "#ae9774",
+      "roof": "#8a775d",
+      "crate": "#8d6039",
+      "pillar": "#7d8278",
+      "ramp": "#9a8066"
+    },
+    "inference": {
+      "mode": "auto",
+      "samples": {
+        "floor": 912,
+        "wall": 4314,
+        "roof": 424
+      },
+      "top_materials": {
+        "floor": [
+          {
+            "material": "DE_DUST/RESIDWALL01A",
+            "weight": 638
+          },
+          {
+            "material": "DE_DUST/RESIDWALL04",
+            "weight": 497
+          },
+          {
+            "material": "DE_DUST/RESIDWALL01",
+            "weight": 327
+          },
+          {
+            "material": "DE_DUST/SITEBWALL13",
+            "weight": 289
+          },
+          {
+            "material": "DE_DUST/TILEFLOOR01",
+            "weight": 267
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL02",
+            "weight": 190
+          },
+          {
+            "material": "GROUND/BLENDSNOW_ASPHAULT",
+            "weight": 180
+          },
+          {
+            "material": "DE_DUST/MARKETWALL02B",
+            "weight": 178
+          }
+        ],
+        "wall": [
+          {
+            "material": "DE_DUST/STONEWALL02A",
+            "weight": 1709
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL03",
+            "weight": 1317
+          },
+          {
+            "material": "DE_DUST/RESIDWALL04",
+            "weight": 1182
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL04A",
+            "weight": 973
+          },
+          {
+            "material": "DE_DUST/RESIDWALL01",
+            "weight": 960
+          },
+          {
+            "material": "DE_DUST/SITEBWALL01A",
+            "weight": 874
+          },
+          {
+            "material": "DE_DUST/SITEBWALL11",
+            "weight": 805
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL02A",
+            "weight": 740
+          }
+        ],
+        "roof": [
+          {
+            "material": "DE_DUST/RESIDWALL01",
+            "weight": 436
+          },
+          {
+            "material": "DE_DUST/RESIDBWALL01",
+            "weight": 418
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL03",
+            "weight": 334
+          },
+          {
+            "material": "DE_DUST/SITEBWALL13",
+            "weight": 281
+          },
+          {
+            "material": "DE_DUST/RESIDWALL01A",
+            "weight": 272
+          },
+          {
+            "material": "DE_DUST/SITEBWALL11",
+            "weight": 108
+          },
+          {
+            "material": "DE_DUST/SITEBWALL01",
+            "weight": 26
+          },
+          {
+            "material": "DE_DUST/SITEBWALL10",
+            "weight": 16
+          }
+        ]
+      }
+    }
+  },
+  "assets": {},
+  "projection": {
+    "source": "nav",
+    "nav": {
+      "path": "source/de_dust2_winter/de_dust2_winter.nav",
+      "version": 9,
+      "subversion": 0,
+      "area_count": 2062,
+      "bytes_remaining_after_areas": 4,
+      "union": {
+        "mode": "grid",
+        "cell_size": 96,
+        "cells": 1094
+      }
+    }
+  },
+  "engine_runtime": {
+    "theme": "ice",
+    "buyzone_padding": 300.0,
+    "bounds": {
+      "min": [
+        -3256,
+        -136,
+        -2104
+      ],
+      "max": [
+        2872,
+        1088,
+        4200
+      ]
+    },
+    "nav_source": "server_generated"
+  }
+}

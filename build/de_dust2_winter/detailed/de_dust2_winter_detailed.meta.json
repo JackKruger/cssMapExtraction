@@ -1,0 +1,251 @@
+{
+  "source_bsp": "source/de_dust2_winter/de_dust2_winter.bsp",
+  "source_extracted_dir": "build/de_dust2_winter/extracted",
+  "coordinate_transform": "source [x,y,z] -> js [x,z,y]",
+  "note": "Convex BSP brushes were approximated as axis-aligned boxes or one-axis ramps. Props were intentionally omitted.",
+  "parameters": {
+    "scale": 1.0,
+    "include_spawn_yaw": false
+  },
+  "output_counts": {
+    "solids": 1290,
+    "ramps": 504,
+    "t_spawns": 20,
+    "ct_spawns": 20,
+    "bombsites": 2,
+    "ladders": 0
+  },
+  "spawn_yaws": {
+    "t": [
+      159,
+      10,
+      356,
+      0,
+      140,
+      140,
+      156,
+      140,
+      356,
+      0,
+      356,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      356,
+      356,
+      156
+    ],
+    "ct": [
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      180,
+      180,
+      0,
+      0,
+      222,
+      222,
+      324,
+      324
+    ]
+  },
+  "brush_conversion": {
+    "brush_count": 2002,
+    "converted": {
+      "solids": 1290,
+      "skipped_material": 208,
+      "ramps": 504
+    },
+    "top_materials": [
+      {
+        "material": "DE_DUST/SITEBWALL01A",
+        "count": 245
+      },
+      {
+        "material": "DE_DUST/RESIDWALL01",
+        "count": 227
+      },
+      {
+        "material": "DE_DUST/RESIDWALL01A",
+        "count": 200
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL01",
+        "count": 193
+      },
+      {
+        "material": "DE_DUST/RESIDWALL04",
+        "count": 75
+      },
+      {
+        "material": "DE_DUST/STONEWALL02C",
+        "count": 74
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL03",
+        "count": 65
+      },
+      {
+        "material": "DE_DUST/DUSANDCRETE",
+        "count": 46
+      },
+      {
+        "material": "DE_DUST/RESIDWALL01B",
+        "count": 38
+      },
+      {
+        "material": "DE_DUST/DUTILE1",
+        "count": 38
+      },
+      {
+        "material": "CS_HAVANA/WHITE",
+        "count": 32
+      },
+      {
+        "material": "DE_DUST/MARKETWALL02B",
+        "count": 32
+      },
+      {
+        "material": "DE_DUST/STONESTEP02",
+        "count": 28
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL03B",
+        "count": 28
+      },
+      {
+        "material": "DE_DUST/RESIDWALL02",
+        "count": 26
+      },
+      {
+        "material": "DE_DUST/SITEBWALL11",
+        "count": 25
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL01B",
+        "count": 24
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL03B",
+        "count": 19
+      },
+      {
+        "material": "DE_DUST/SITEBWALL01",
+        "count": 19
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL02A",
+        "count": 18
+      },
+      {
+        "material": "DE_DUST/GROUNDSAND_BLEND",
+        "count": 17
+      },
+      {
+        "material": "DE_DUST/DOOR011",
+        "count": 17
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL04A",
+        "count": 14
+      },
+      {
+        "material": "DE_DUST/SITEBWALL12",
+        "count": 14
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL04",
+        "count": 14
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL02B",
+        "count": 13
+      },
+      {
+        "material": "DE_DUST/SITEBWALL12A",
+        "count": 13
+      },
+      {
+        "material": "DE_DUST/SITEBWALL01B",
+        "count": 12
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL04B",
+        "count": 12
+      },
+      {
+        "material": "CS_ITALY/MARKETWALL04A",
+        "count": 11
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL02B",
+        "count": 10
+      },
+      {
+        "material": "DE_DUST/STONESTEP01",
+        "count": 10
+      },
+      {
+        "material": "DE_DUST/SITEBWALL14",
+        "count": 10
+      },
+      {
+        "material": "DE_DUST/MARKETWALL03",
+        "count": 10
+      },
+      {
+        "material": "DE_DUST/STONEWALL02",
+        "count": 9
+      },
+      {
+        "material": "DE_DUST/STONEWALL02A",
+        "count": 8
+      },
+      {
+        "material": "DE_DUST/SITEBWALL13",
+        "count": 8
+      },
+      {
+        "material": "CS_ITALY/MARKETWALL04",
+        "count": 8
+      },
+      {
+        "material": "DEV/DEV_MEASURESTAIRS01A",
+        "count": 8
+      },
+      {
+        "material": "DE_DUST/STONEWALL02B",
+        "count": 7
+      }
+    ]
+  },
+  "engine_runtime": {
+    "theme": "ice",
+    "buyzone_padding": 300.0,
+    "bounds": {
+      "min": [
+        -4168,
+        -2337.36,
+        -2344
+      ],
+      "max": [
+        11110.998,
+        1416.006,
+        4424
+      ]
+    },
+    "nav_source": "server_generated"
+  }
+}
