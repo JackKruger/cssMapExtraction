@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>De Mirage CS:GO Flat Assets Grid 128</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #101927; color: #e8eef5; font: 13px system-ui, sans-serif; }
+  #toolbar { position: fixed; left: 12px; top: 12px; z-index: 2; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; background: rgba(10,16,26,.92); border: 1px solid #2c3c50; padding: 8px 10px; border-radius: 6px; }
+  label { display: inline-flex; gap: 5px; align-items: center; white-space: nowrap; }
+  button { background: #223349; color: #e8eef5; border: 1px solid #3a506b; border-radius: 5px; padding: 4px 8px; }
+  canvas { display: block; width: 100vw; height: 100vh; cursor: grab; }
+  canvas.dragging { cursor: grabbing; }
+  #stats { position: fixed; right: 12px; top: 12px; z-index: 2; background: rgba(10,16,26,.92); border: 1px solid #2c3c50; padding: 8px 10px; border-radius: 6px; white-space: pre; }
+</style>
+</head>
+<body>
+<div id="toolbar">
+  <strong>de_mirage_csgo_flat_assets_grid_128</strong>
+  <label><input type="checkbox" data-layer="floor" checked> floors</label>
+  <label><input type="checkbox" data-layer="wall" checked> walls</label>
+  <label><input type="checkbox" data-layer="roof"> roof</label>
+  <label><input type="checkbox" data-layer="asset" checked> assets</label>
+  <label><input type="checkbox" data-layer="spawn" checked> spawns</label>
+  <label><input type="checkbox" data-layer="site" checked> sites</label>
+  <button id="fit">Fit</button>
+</div>
+<div id="stats"></div>
+<canvas id="map"></canvas>
+<script>
+const mapData = {"name":"de_mirage_csgo_flat_assets_grid_128","title":"De Mirage CS:GO Flat Assets Grid 128","theme":"sand","mode":"defusal","killY":64,"solids":[{"min":[-1152,96,-2688],"max":[-896,128,-2176],"color":10851193,"type":"floor"},{"min":[-1408,96,-2560],"max":[-1152,128,-2176],"color":10851193,"type":"floor"},{"min":[-896,96,-2560],"max":[-512,128,-256],"color":10851193,"type":"floor"},{"min":[-1664,96,-2432],"max":[-1408,128,-640],"color":10851193,"type":"floor"},{"min":[-512,96,-2432],"max":[1152,128,-1920],"color":10851193,"type":"floor"},{"min":[-1792,96,-2304],"max":[-1664,128,896],"color":10851193,"type":"floor"},{"min":[-1408,96,-2176],"max":[-1280,128,-2048],"color":10851193,"type":"floor"},{"min":[-2048,96,-2048],"max":[-1792,128,-1664],"color":10851193,"type":"floor"},{"min":[-512,96,-1920],"max":[256,128,-1408],"color":10851193,"type":"floor"},{"min":[896,96,-1920],"max":[1152,128,-1664],"color":10851193,"type":"floor"},{"min":[256,96,-1792],"max":[768,128,-1408],"color":10851193,"type":"floor"},{"min":[-1408,96,-1664],"max":[-1280,128,-1536],"color":10851193,"type":"floor"},{"min":[896,96,-1664],"max":[1024,128,-1024],"color":10851193,"type":"floor"},{"min":[-1280,96,-1536],"max":[-896,128,-1280],"color":10851193,"type":"floor"},{"min":[1024,96,-1536],"max":[1408,128,640],"color":10851193,"type":"floor"},{"min":[-512,96,-1408],"max":[-384,128,-1280],"color":10851193,"type":"floor"},{"min":[512,96,-1408],"max":[768,128,-1152],"color":10851193,"type":"floor"},{"min":[-1408,96,-1280],"max":[-1024,128,-896],"color":10851193,"type":"floor"},{"min":[768,96,-1280],"max":[896,128,-1024],"color":10851193,"type":"floor"},{"min":[640,96,-1152],"max":[768,128,-1024],"color":10851193,"type":"floor"},{"min":[-384,96,-1024],"max":[512,128,-256],"color":10851193,"type":"floor"},{"min":[-1280,96,-896],"max":[-896,128,-384],"color":10851193,"type":"floor"},{"min":[-512,96,-896],"max":[-384,128,-256],"color":10851193,"type":"floor"},{"min":[-2432,96,-768],"max":[-1792,128,-384],"color":10851193,"type":"floor"},{"min":[-1664,96,-640],"max":[-1536,128,896],"color":10851193,"type":"floor"},{"min":[512,96,-640],"max":[640,128,-384],"color":10851193,"type":"floor"},{"min":[-2432,96,-384],"max":[-2176,128,896],"color":10851193,"type":"floor"},{"min":[-2048,96,-384],"max":[-1792,128,896],"color":10851193,"type":"floor"},{"min":[-1152,96,-384],"max":[-896,128,768],"color":10851193,"type":"floor"},{"min":[1408,96,-384],"max":[1536,128,128],"color":10851193,"type":"floor"},{"min":[-2176,96,-256],"max":[-2048,128,896],"color":10851193,"type":"floor"},{"min":[-896,96,-256],"max":[-640,128,640],"color":10851193,"type":"floor"},{"min":[128,96,-256],"max":[512,128,896],"color":10851193,"type":"floor"},{"min":[-2688,96,0],"max":[-2432,128,640],"color":10851193,"type":"floor"},{"min":[-1536,96,0],"max":[-1152,128,896],"color":10851193,"type":"floor"},{"min":[-640,96,256],"max":[-128,128,640],"color":10851193,"type":"floor"},{"min":[896,96,256],"max":[1024,128,768],"color":10851193,"type":"floor"},{"min":[512,96,384],"max":[896,128,768],"color":10851193,"type":"floor"},{"min":[-512,96,640],"max":[128,128,896],"color":10851193,"type":"floor"},{"min":[1024,96,640],"max":[1152,128,768],"color":10851193,"type":"floor"},{"min":[-1152,96,768],"max":[-1024,128,896],"color":10851193,"type":"floor"},{"min":[512,96,768],"max":[768,128,1024],"color":10851193,"type":"floor"},{"min":[-512,96,896],"max":[-128,128,1024],"color":10851193,"type":"floor"},{"min":[384,96,896],"max":[512,128,1024],"color":10851193,"type":"floor"},{"min":[-128,128,608],"max":[128,288,640],"color":11178611,"type":"wall"},{"min":[-1408,128,-1312],"max":[-1280,288,-1280],"color":11178611,"type":"wall"},{"min":[768,128,-1312],"max":[896,288,-1280],"color":11178611,"type":"wall"},{"min":[-1664,128,-2464],"max":[-1408,288,-2432],"color":11178611,"type":"wall"},{"min":[-512,128,-2464],"max":[1152,288,-2432],"color":11178611,"type":"wall"},{"min":[-1024,128,-928],"max":[-896,288,-896],"color":11178611,"type":"wall"},{"min":[-512,128,-928],"max":[-384,288,-896],"color":11178611,"type":"wall"},{"min":[-640,128,224],"max":[-128,288,256],"color":11178611,"type":"wall"},{"min":[896,128,224],"max":[1024,288,256],"color":11178611,"type":"wall"},{"min":[-1408,128,-2592],"max":[-1152,288,-2560],"color":11178611,"type":"wall"},{"min":[-896,128,-2592],"max":[-512,288,-2560],"color":11178611,"type":"wall"},{"min":[256,128,-1824],"max":[768,288,-1792],"color":11178611,"type":"wall"},{"min":[-2432,128,-800],"max":[-1792,288,-768],"color":11178611,"type":"wall"},{"min":[-1280,128,-1568],"max":[-896,288,-1536],"color":11178611,"type":"wall"},{"min":[1024,128,-1568],"max":[1408,288,-1536],"color":11178611,"type":"wall"},{"min":[-2176,128,-288],"max":[-2048,288,-256],"color":11178611,"type":"wall"},{"min":[512,128,352],"max":[896,288,384],"color":11178611,"type":"wall"},{"min":[-1152,128,-2720],"max":[-896,288,-2688],"color":11178611,"type":"wall"},{"min":[-2688,128,-32],"max":[-2432,288,0],"color":11178611,"type":"wall"},{"min":[-1536,128,-32],"max":[-1152,288,0],"color":11178611,"type":"wall"},{"min":[-384,128,-1056],"max":[512,288,-1024],"color":11178611,"type":"wall"},{"min":[512,128,-672],"max":[640,288,-640],"color":11178611,"type":"wall"},{"min":[1408,128,-416],"max":[1536,288,-384],"color":11178611,"type":"wall"},{"min":[-1408,128,-1696],"max":[-1280,288,-1664],"color":11178611,"type":"wall"},{"min":[-2048,128,-2080],"max":[-1792,288,-2048],"color":11178611,"type":"wall"},{"min":[-1792,128,-2336],"max":[-1664,288,-2304],"color":11178611,"type":"wall"},{"min":[256,128,-1920],"max":[896,288,-1888],"color":11178611,"type":"wall"},{"min":[-2048,128,-1664],"max":[-1792,288,-1632],"color":11178611,"type":"wall"},{"min":[1024,128,-1664],"max":[1152,288,-1632],"color":11178611,"type":"wall"},{"min":[1408,128,128],"max":[1536,288,160],"color":11178611,"type":"wall"},{"min":[-1024,128,768],"max":[-896,288,800],"color":11178611,"type":"wall"},{"min":[768,128,768],"max":[1152,288,800],"color":11178611,"type":"wall"},{"min":[-1024,128,-1280],"max":[-896,288,-1248],"color":11178611,"type":"wall"},{"min":[-512,128,-1280],"max":[-384,288,-1248],"color":11178611,"type":"wall"},{"min":[-1536,128,-640],"max":[-1408,288,-608],"color":11178611,"type":"wall"},{"min":[-512,128,1024],"max":[-128,288,1056],"color":11178611,"type":"wall"},{"min":[384,128,1024],"max":[768,288,1056],"color":11178611,"type":"wall"},{"min":[-1280,128,-2176],"max":[-896,288,-2144],"color":11178611,"type":"wall"},{"min":[-640,128,-256],"max":[128,288,-224],"color":11178611,"type":"wall"},{"min":[-2432,128,896],"max":[-1024,288,928],"color":11178611,"type":"wall"},{"min":[-128,128,896],"max":[384,288,928],"color":11178611,"type":"wall"},{"min":[640,128,-1024],"max":[1024,288,-992],"color":11178611,"type":"wall"},{"min":[-2176,128,-384],"max":[-2048,288,-352],"color":11178611,"type":"wall"},{"min":[-1280,128,-384],"max":[-1152,288,-352],"color":11178611,"type":"wall"},{"min":[512,128,-384],"max":[640,288,-352],"color":11178611,"type":"wall"},{"min":[-384,128,-1408],"max":[512,288,-1376],"color":11178611,"type":"wall"},{"min":[-2688,128,640],"max":[-2432,288,672],"color":11178611,"type":"wall"},{"min":[-896,128,640],"max":[-512,288,672],"color":11178611,"type":"wall"},{"min":[1152,128,640],"max":[1408,288,672],"color":11178611,"type":"wall"},{"min":[-1408,128,-2048],"max":[-1280,288,-2016],"color":11178611,"type":"wall"},{"min":[-1408,128,-896],"max":[-1280,288,-864],"color":11178611,"type":"wall"},{"min":[512,128,-1152],"max":[640,288,-1120],"color":11178611,"type":"wall"},{"min":[-1408,128,-1536],"max":[-1280,288,-1504],"color":11178611,"type":"wall"},{"min":[992,128,-1024],"max":[1024,288,256],"color":11178611,"type":"wall"},{"min":[-928,128,-2176],"max":[-896,288,-1536],"color":11178611,"type":"wall"},{"min":[-928,128,-1280],"max":[-896,288,-896],"color":11178611,"type":"wall"},{"min":[-2464,128,-768],"max":[-2432,288,0],"color":11178611,"type":"wall"},{"min":[-2464,128,640],"max":[-2432,288,896],"color":11178611,"type":"wall"},{"min":[864,128,-1920],"max":[896,288,-1280],"color":11178611,"type":"wall"},{"min":[864,128,256],"max":[896,288,384],"color":11178611,"type":"wall"},{"min":[-544,128,640],"max":[-512,288,1024],"color":11178611,"type":"wall"},{"min":[-1440,128,-2560],"max":[-1408,288,-2432],"color":11178611,"type":"wall"},{"min":[-2080,128,-2048],"max":[-2048,288,-1664],"color":11178611,"type":"wall"},{"min":[-2080,128,-384],"max":[-2048,288,-256],"color":11178611,"type":"wall"},{"min":[-1184,128,-2688],"max":[-1152,288,-2560],"color":11178611,"type":"wall"},{"min":[-1184,128,-384],"max":[-1152,288,0],"color":11178611,"type":"wall"},{"min":[-2720,128,0],"max":[-2688,288,640],"color":11178611,"type":"wall"},{"min":[-1312,128,-1536],"max":[-1280,288,-1280],"color":11178611,"type":"wall"},{"min":[-1312,128,-896],"max":[-1280,288,-384],"color":11178611,"type":"wall"},{"min":[-1824,128,-2304],"max":[-1792,288,-2048],"color":11178611,"type":"wall"},{"min":[-1824,128,-1664],"max":[-1792,288,-768],"color":11178611,"type":"wall"},{"min":[-1696,128,-2432],"max":[-1664,288,-2304],"color":11178611,"type":"wall"},{"min":[96,128,-256],"max":[128,288,640],"color":11178611,"type":"wall"},{"min":[-416,128,-1024],"max":[-384,288,-896],"color":11178611,"type":"wall"},{"min":[480,128,-1408],"max":[512,288,-1152],"color":11178611,"type":"wall"},{"min":[352,128,896],"max":[384,288,1024],"color":11178611,"type":"wall"},{"min":[608,128,-1152],"max":[640,288,-1024],"color":11178611,"type":"wall"},{"min":[1152,128,-2432],"max":[1184,288,-1664],"color":11178611,"type":"wall"},{"min":[1152,128,640],"max":[1184,288,768],"color":11178611,"type":"wall"},{"min":[1536,128,-384],"max":[1568,288,128],"color":11178611,"type":"wall"},{"min":[-896,128,-2688],"max":[-864,288,-2560],"color":11178611,"type":"wall"},{"min":[-896,128,640],"max":[-864,288,768],"color":11178611,"type":"wall"},{"min":[512,128,-1024],"max":[544,288,-640],"color":11178611,"type":"wall"},{"min":[512,128,-384],"max":[544,288,384],"color":11178611,"type":"wall"},{"min":[-384,128,-1408],"max":[-352,288,-1280],"color":11178611,"type":"wall"},{"min":[-1408,128,-2048],"max":[-1376,288,-1664],"color":11178611,"type":"wall"},{"min":[-1408,128,-1536],"max":[-1376,288,-1280],"color":11178611,"type":"wall"},{"min":[-1408,128,-896],"max":[-1376,288,-640],"color":11178611,"type":"wall"},{"min":[-512,128,-2560],"max":[-480,288,-2432],"color":11178611,"type":"wall"},{"min":[-512,128,-1280],"max":[-480,288,-896],"color":11178611,"type":"wall"},{"min":[1408,128,-1536],"max":[1440,288,-384],"color":11178611,"type":"wall"},{"min":[1408,128,128],"max":[1440,288,640],"color":11178611,"type":"wall"},{"min":[-1536,128,-640],"max":[-1504,288,0],"color":11178611,"type":"wall"},{"min":[768,128,-1792],"max":[800,288,-1280],"color":11178611,"type":"wall"},{"min":[768,128,768],"max":[800,288,1024],"color":11178611,"type":"wall"},{"min":[-640,128,-256],"max":[-608,288,256],"color":11178611,"type":"wall"},{"min":[-128,128,256],"max":[-96,288,640],"color":11178611,"type":"wall"},{"min":[-128,128,896],"max":[-96,288,1024],"color":11178611,"type":"wall"},{"min":[640,128,-640],"max":[672,288,-384],"color":11178611,"type":"wall"},{"min":[256,128,-1920],"max":[288,288,-1792],"color":11178611,"type":"wall"},{"min":[1024,128,-1664],"max":[1056,288,-1536],"color":11178611,"type":"wall"},{"min":[-1280,128,-2176],"max":[-1248,288,-2048],"color":11178611,"type":"wall"},{"min":[-1280,128,-1664],"max":[-1248,288,-1536],"color":11178611,"type":"wall"},{"min":[-1024,128,-1280],"max":[-992,288,-896],"color":11178611,"type":"wall"},{"min":[-1024,128,768],"max":[-992,288,896],"color":11178611,"type":"wall"},{"min":[-2176,128,-384],"max":[-2144,288,-256],"color":11178611,"type":"wall"},{"min":[-760.026,128,221.851],"max":[-699.974,163.101,282.149],"color":9265209,"type":"crate"},{"min":[65.516,128,-304.351],"max":[118.484,157.867,-251.649],"color":9265209,"type":"crate"},{"min":[26.974,128,-325.149],"max":[87.026,163.101,-264.851],"color":9265209,"type":"crate"},{"min":[-1257.263,128,-558.229],"max":[-1210.737,160,-497.771],"color":9265209,"type":"crate"},{"min":[-1177.599,128,-542.191],"max":[-1110.401,160,-473.809],"color":9265209,"type":"crate"},{"min":[-1205.546,128,-491.384],"max":[-1142.454,160,-440.616],"color":9265209,"type":"crate"},{"min":[-1178.346,128,-637.164],"max":[-1109.654,160,-570.836],"color":9265209,"type":"crate"},{"min":[-760,128,-218],"max":[-704,208,-162],"color":9265209,"type":"crate"},{"min":[-613.651,128,-891.58],"max":[-552.349,163.101,-830.42],"color":9265209,"type":"crate"},{"min":[-607.775,128,-918.679],"max":[-550.225,157.867,-861.321],"color":9265209,"type":"crate"},{"min":[-1234.77,128,997.603],"max":[-1189.23,163.101,1042.397],"color":9265209,"type":"crate"},{"min":[-1046.334,128,403.666],"max":[-985.666,208,464.334],"color":9265209,"type":"crate"},{"min":[806,128,-2085],"max":[862,208,-2029],"color":9265209,"type":"crate"},{"min":[806,128,-2026],"max":[862,208,-1970],"color":9265209,"type":"crate"},{"min":[444.045,128,858.756],"max":[483.955,158.763,901.244],"color":9265209,"type":"crate"},{"min":[-1444.208,128,-1654.208],"max":[-1359.792,184,-1569.792],"color":9265209,"type":"crate"},{"min":[1024.112,128,256.104],"max":[1087.888,172.65,319.896],"color":9265209,"type":"crate"},{"min":[256.965,128,-1694.035],"max":[321.035,208,-1629.965],"color":9265209,"type":"crate"},{"min":[-1697.642,128,-1206.028],"max":[-1654.358,163.101,-1161.972],"color":9265209,"type":"crate"},{"min":[-1203.783,128,-95.783],"max":[-1164.217,176,-56.217],"color":9265209,"type":"crate"},{"min":[561.214,128,-1226.738],"max":[622.786,163.101,-1165.262],"color":9265209,"type":"crate"},{"min":[537.121,128,-1270.606],"max":[590.879,163.101,-1217.394],"color":9265209,"type":"crate"},{"min":[541.232,128,-1234.896],"max":[594.768,157.867,-1181.104],"color":9265209,"type":"crate"},{"min":[-2045.359,128,812.641],"max":[-1994.641,176,863.359],"color":9265209,"type":"crate"},{"min":[-2009.768,128,804.104],"max":[-1956.232,157.867,857.896],"color":9265209,"type":"crate"},{"min":[-1424,128,638],"max":[-1368,208,694],"color":9265209,"type":"crate"},{"min":[-1184.733,128,583.308],"max":[-1163.267,162.969,604.692],"color":9265209,"type":"crate"},{"min":[-1195.056,128,532.951],"max":[-1164.944,162.969,563.049],"color":9265209,"type":"crate"},{"min":[-1066.253,128,-737.357],"max":[-1009.747,157.867,-680.643],"color":9265209,"type":"crate"},{"min":[-1044.506,128,-2294.506],"max":[-981.494,200,-2231.494],"color":9265209,"type":"crate"},{"min":[-1060.882,128,-2263.882],"max":[-1005.118,200,-2208.118],"color":9265209,"type":"crate"},{"min":[-1243.344,128,-785.344],"max":[-1194.656,176,-736.656],"color":9265209,"type":"crate"},{"min":[-1268,128,-716],"max":[-1232,176,-680],"color":9265209,"type":"crate"},{"min":[-1173.359,128,-1087.359],"max":[-1122.641,176,-1036.641],"color":9265209,"type":"crate"},{"min":[70.641,128,-901.359],"max":[121.359,176,-850.641],"color":9265209,"type":"crate"},{"min":[122.638,128,-935.362],"max":[163.362,176,-894.638],"color":9265209,"type":"crate"},{"min":[47.87,128,-900.88],"max":[62.13,143.5,-879.12],"color":9265209,"type":"crate"},{"min":[106.578,128,-878.887],"max":[125.422,143.5,-855.113],"color":9265209,"type":"crate"},{"min":[-836.575,128,-1904.575],"max":[-775.425,200,-1843.425],"color":9265209,"type":"crate"},{"min":[-815.23,128,-1915.23],"max":[-764.77,200,-1864.77],"color":9265209,"type":"crate"},{"min":[-831.506,128,-1949.506],"max":[-768.494,200,-1886.494],"color":9265209,"type":"crate"},{"min":[-854.219,128,-1948.219],"max":[-789.781,200,-1883.781],"color":9265209,"type":"crate"},{"min":[-189.642,128,657.972],"max":[-146.358,163.101,702.028],"color":9265209,"type":"crate"},{"min":[-487.969,128,858.182],"max":[-443.971,157.867,901.818],"color":9265209,"type":"crate"},{"min":[-490.768,128,812.633],"max":[-437.232,157.867,866.425],"color":9265209,"type":"crate"},{"min":[475.358,128,655.972],"max":[518.642,163.101,700.028],"color":9265209,"type":"crate"},{"min":[736.141,128,572.158],"max":[783.859,172.65,619.842],"color":9265209,"type":"crate"},{"min":[477.001,128,575.182],"max":[520.999,157.867,618.818],"color":9265209,"type":"crate"},{"min":[-892.693,128,-2566.072],"max":[-837.429,192,-2510.808],"color":9265209,"type":"crate"},{"min":[691.997,128,-747.967],"max":[736.003,175.888,-704.033],"color":9265209,"type":"crate"},{"min":[733.79,128,-785.264],"max":[774.21,175.888,-744.736],"color":9265209,"type":"crate"},{"min":[-2245.535,128,-709.864],"max":[-2098.465,225.865,-658.136],"color":9265209,"type":"crate"},{"min":[-2312.768,128,639.396],"max":[-2215.232,176,752.604],"color":9265209,"type":"crate"},{"min":[-1010.301,128,-2311.936],"max":[-898.967,251.989,-2239.124],"color":9265209,"type":"crate"},{"min":[-958.972,128,-2522.263],"max":[-847.752,182.778,-2414.697],"color":9265209,"type":"crate"},{"min":[-957.549,128,-2521.552],"max":[-849.175,191.107,-2415.408],"color":9265209,"type":"crate"},{"min":[-1563.504,128,820.201],"max":[-1500.496,168.502,883.799],"color":9265209,"type":"crate"},{"min":[-1593.994,128,850.01],"max":[-1566.006,161.931,877.99],"color":9265209,"type":"crate"},{"min":[-1258.969,128,-505.39],"max":[-1201.031,179.447,-442.61],"color":9265209,"type":"crate"},{"min":[-1263.161,128,-502.473],"max":[-1208.839,135.048,-439.527],"color":9265209,"type":"crate"},{"min":[-1264.473,128,-499.161],"max":[-1201.527,135.048,-444.839],"color":9265209,"type":"crate"},{"min":[-930.595,128,-13.124],"max":[-855.405,185.239,61.124],"color":9265209,"type":"crate"},{"min":[-1913.509,128,-1436.488],"max":[-1882.491,156.57,-1291.512],"color":9265209,"type":"crate"},{"min":[-1276.665,128,839.563],"max":[-1243.335,180.322,872.437],"color":9265209,"type":"crate"},{"min":[-1286.521,128,890.79],"max":[-1257.479,180.322,917.21],"color":9265209,"type":"crate"},{"min":[-813,128,194],"max":[-717,176,266],"color":9265209,"type":"crate"},{"min":[-1322.321,128,646.635],"max":[-1273.679,216.35,673.365],"color":9265209,"type":"crate"},{"min":[-1107.718,128,725.547],"max":[-996.282,192,870.453],"color":9265209,"type":"crate"},{"min":[-1037.077,128,738.923],"max":[-998.923,160.948,777.077],"color":9265209,"type":"crate"},{"min":[327.52,128,838.934],"max":[376.48,168.502,891.066],"color":9265209,"type":"crate"},{"min":[-1875.258,128,820.363],"max":[-1808.742,172.5,851.637],"color":9265209,"type":"crate"},{"min":[-1480.846,128,-1638.213],"max":[-1391.154,176,-1529.787],"color":9265209,"type":"crate"},{"min":[-1381.592,128,-1597.617],"max":[-1370.408,334.86,-1536.383],"color":9265209,"type":"crate"},{"min":[-538,128,-1218],"max":[-474,208,-1186],"color":9265209,"type":"crate"},{"min":[-809,128,-1107],"max":[-745,208,-1075],"color":9265209,"type":"crate"},{"min":[-811,128,-1122],"max":[-747,208,-1090],"color":9265209,"type":"crate"},{"min":[1060.634,128,567.371],"max":[1163.366,176,648.629],"color":9265209,"type":"crate"},{"min":[-1643.788,128,568.478],"max":[-1556.212,176,675.522],"color":9265209,"type":"crate"},{"min":[-23,128,853],"max":[9,208,917],"color":9265209,"type":"crate"},{"min":[-38,128,855],"max":[-6,208,919],"color":9265209,"type":"crate"},{"min":[-160.727,128,-1467.862],"max":[-87.273,179.447,-1398.138],"color":9265209,"type":"crate"},{"min":[259.808,128,-1722.553],"max":[308.192,182.001,-1673.447],"color":9265209,"type":"crate"},{"min":[-91.215,128,-1849.752],"max":[-14.785,185.239,-1774.248],"color":9265209,"type":"crate"},{"min":[-2.119,128,-1843.119],"max":[78.119,184,-1762.881],"color":9265209,"type":"crate"},{"min":[-246.272,128,-1591.393],"max":[-167.728,185.239,-1511.967],"color":9265209,"type":"crate"},{"min":[-156.575,128,-1541.149],"max":[-75.425,185.239,-1460.851],"color":9265209,"type":"crate"},{"min":[-149.942,128,-1528.706],"max":[-86.058,135.048,-1473.294],"color":9265209,"type":"crate"},{"min":[-1623.397,128,-217.397],"max":[-1504.603,176,-98.603],"color":9265209,"type":"crate"},{"min":[625.579,128,-1974.635],"max":[754.421,159.576,-1929.365],"color":9265209,"type":"crate"},{"min":[439.579,128,-1970.635],"max":[568.421,159.576,-1925.365],"color":9265209,"type":"crate"},{"min":[821.267,128,-2138.609],"max":[868.733,182.001,-2093.391],"color":9265209,"type":"crate"},{"min":[-1041,128,616],"max":[-977,208,648],"color":9265209,"type":"crate"},{"min":[-2503,128,280],"max":[-2391,176,328],"color":9265209,"type":"crate"},{"min":[-2549.03,128,303.419],"max":[-2444.97,176,386.581],"color":9265209,"type":"crate"},{"min":[-2218.707,128,-265.673],"max":[-2189.293,180.322,-234.327],"color":9265209,"type":"crate"},{"min":[-2163.136,128,-265.787],"max":[-2140.864,180.322,-240.213],"color":9265209,"type":"crate"},{"min":[-2428.345,128,-101.303],"max":[-2395.655,178.868,-70.697],"color":9265209,"type":"crate"},{"min":[-1843.843,128,-493.51],"max":[-1792.157,220.729,-418.49],"color":9265209,"type":"crate"},{"min":[-1767.68,128,-527.68],"max":[-1736.32,148.382,-496.32],"color":9265209,"type":"crate"},{"min":[-1876.109,128,-428.635],"max":[-1825.891,220.729,-353.365],"color":9265209,"type":"crate"},{"min":[-1964.119,128,-707.404],"max":[-1891.881,220.729,-684.596],"color":9265209,"type":"crate"},{"min":[-1884.868,128,-709.584],"max":[-1811.372,220.729,-682.408],"color":9265209,"type":"crate"},{"min":[-2186.495,128,-480.658],"max":[-2113.505,220.729,-455.342],"color":9265209,"type":"crate"},{"min":[-2270.119,128,-477.404],"max":[-2197.881,220.729,-454.596],"color":9265209,"type":"crate"},{"min":[-2030.58,128,-360.298],"max":[-1961.42,211.032,-291.702],"color":9265209,"type":"crate"},{"min":[-2111.454,128,-375.708],"max":[-2036.546,211.032,-300.292],"color":9265209,"type":"crate"},{"min":[-2090.119,128,-395.404],"max":[-2017.881,220.729,-372.596],"color":9265209,"type":"crate"},{"min":[786.079,128,602.079],"max":[877.921,184,693.921],"color":9265209,"type":"crate"},{"min":[-1037.648,128,-2260.648],"max":[-990.352,183.316,-2213.352],"color":9265209,"type":"crate"},{"min":[-1225.283,128,-716.543],"max":[-1114.717,176,-623.457],"color":9265209,"type":"crate"},{"min":[-1171.358,128,-1069.714],"max":[-1088.642,176,-1002.286],"color":9265209,"type":"crate"},{"min":[-832.012,128,-1850.897],"max":[-795.988,156.57,-1705.103],"color":9265209,"type":"crate"},{"min":[-826.25,128,-2072.25],"max":[-797.75,156.57,-1927.75],"color":9265209,"type":"crate"},{"min":[-2684.112,128,610.132],"max":[-2565.888,176,717.868],"color":9265209,"type":"crate"},{"min":[-832.369,128,-1916.369],"max":[-791.631,183.316,-1875.631],"color":9265209,"type":"crate"},{"min":[-1084.355,128,655.178],"max":[-951.645,192,735.932],"color":9265209,"type":"crate"},{"min":[-1152.972,128,303.45],"max":[-1087.028,240,416.55],"color":9265209,"type":"crate"},{"min":[-1733.112,128,-836.617],"max":[-1721.928,334.86,-775.383],"color":9265209,"type":"crate"},{"min":[-2420.119,128,597.881],"max":[-2339.881,184,678.119],"color":9265209,"type":"crate"},{"min":[-452.781,128,873.096],"max":[-425.219,162.541,900.904],"color":9265209,"type":"crate"},{"min":[-404.988,128,875.926],"max":[-377.012,162.541,904.074],"color":9265209,"type":"crate"},{"min":[-1122.617,128,74.889],"max":[-1061.383,334.86,86.073],"color":9265209,"type":"crate"},{"min":[531.083,128,661.402],"max":[552.917,180.322,686.598],"color":9265209,"type":"crate"},{"min":[626.727,128,765.503],"max":[669.273,166.731,874.497],"color":9265209,"type":"crate"},{"min":[433.716,128,849.88],"max":[494.284,164.965,910.12],"color":9265209,"type":"crate"},{"min":[-518.617,128,-813.592],"max":[-457.383,334.86,-802.408],"color":9265209,"type":"crate"},{"min":[24.753,128,-2186.867],"max":[111.247,185.239,-2101.133],"color":9265209,"type":"crate"},{"min":[-299.161,128,-2311.473],"max":[-244.839,135.048,-2248.527],"color":9265209,"type":"crate"},{"min":[-377.259,128,-2392.837],"max":[-298.741,135.048,-2311.163],"color":9265209,"type":"crate"},{"min":[-325.574,128,-2337.696],"max":[-214.426,182.778,-2223.204],"color":9265209,"type":"crate"},{"min":[-324.8,128,-2336.27],"max":[-215.2,191.107,-2224.63],"color":9265209,"type":"crate"},{"min":[-394.324,128,-2413.386],"max":[-270.618,182.778,-2287.894],"color":9265209,"type":"crate"},{"min":[-393.283,128,-2411.996],"max":[-271.659,191.107,-2289.284],"color":9265209,"type":"crate"},{"min":[-1979.285,128,-1233.216],"max":[-1860.715,262.501,-1150.784],"color":9265209,"type":"crate"},{"min":[611.579,128,-2406.635],"max":[740.421,159.576,-2361.365],"color":9265209,"type":"crate"},{"min":[459.194,128,-2407.756],"max":[588.806,159.576,-2360.244],"color":9265209,"type":"crate"},{"min":[-384.576,128,-952.659],"max":[-351.424,180.322,-919.341],"color":9265209,"type":"crate"},{"min":[550.784,128,-81.285],"max":[633.216,262.501,37.285],"color":9265209,"type":"crate"},{"min":[285.42,128,-778.298],"max":[354.58,211.032,-709.702],"color":9265209,"type":"crate"},{"min":[195.296,128,-748.704],"max":[292.704,211.032,-651.296],"color":9265209,"type":"crate"},{"min":[-1986.026,128,69.252],"max":[-1877.974,253.613,178.748],"color":9265209,"type":"crate"},{"min":[-1982.624,128,74.846],"max":[-1881.376,244.973,173.154],"color":9265209,"type":"crate"},{"min":[-2214.624,128,338.846],"max":[-2113.376,244.973,437.154],"color":9265209,"type":"crate"},{"min":[-2218.026,128,333.252],"max":[-2109.974,253.613,442.748],"color":9265209,"type":"crate"},{"min":[436.582,128,-344.246],"max":[551.418,176,-243.754],"color":9265209,"type":"crate"},{"min":[487.665,128,-363.292],"max":[520.335,178.868,-332.708],"color":9265209,"type":"crate"},{"min":[-200.543,128,345.67],"max":[-95.457,176,430.33],"color":9265209,"type":"crate"},{"min":[-851.025,128,-2529.511],"max":[-836.377,142.152,-2511.829],"color":9265209,"type":"crate"},{"min":[-716.409,128,-2166.082],"max":[-567.555,253.613,-2017.758],"color":9265209,"type":"crate"},{"min":[-709.863,128,-2160.339],"max":[-574.101,244.973,-2023.501],"color":9265209,"type":"crate"}],"ramps":[],"surfStart":[1376,176,-304,227],"surfFinish":{"min":[-616,-2328.0],"max":[-264.004,-2007.996]},"spawns":{"t":[[1376,-304,227],[1376,-208,227],[1376,-112,141],[1376,-16,141],[1296,-352,227],[1296,-256,227],[1296,-160,227],[1296,-64,141],[1296,32,141],[1216,-16,90],[1216,-115,90],[1216,-211,270],[1216,-307,270],[1136,-256,270],[1136,-160,270],[1136,-64,90],[1136,32,90]],"ct":[[-1776,-1976,331],[-2022,-1818,0],[-2022,-1978,0],[-1776,-1800,36],[-1902,-1816,0],[-1902,-1976,0],[-1958,-1898,0],[-1632,-2072,270],[-1608,-1888,306],[-1830,-1896,0],[-1720,-1896,50],[-1656,-1800,94],[-1656,-1976,299],[-1552,-1968,288]]},"bombsites":[{"name":"A","min":[-616,-2328.0],"max":[-264.004,-2007.996]},{"name":"B","min":[-2216,72],"max":[-1880,440]}],"hostages":[],"rescueZone":null,"ladders":[],"skyTop":5607624,"skyHorizon":15522220,"skyColor":10670826,"fogColor":14470310,"fogNear":1900,"fogFar":4800,"sunDir":[-0.35,-1.0,0.3],"sunColor":16773840,"sunIntensity":1.5,"hemiSky":13822198,"hemiGround":9402956,"hemiIntensity":1.0,"bounds":{"min":[-3720,-136,-3720],"max":[2568,1134.86,2056]},"buyzones":{"t":{"min":[836,-652],"max":[1676,332]},"ct":{"min":[-2322,-2372],"max":[-1252,-1500]}},"nav":[]};
+const canvas = document.getElementById('map');
+const ctx = canvas.getContext('2d');
+const stats = document.getElementById('stats');
+const layers = { floor: true, wall: true, roof: false, asset: true, spawn: true, site: true };
+let scale = 1;
+let offsetX = 0;
+let offsetY = 0;
+let dragging = false;
+let lastX = 0;
+let lastY = 0;
+
+const colors = {
+  floor: '#8ba0b4',
+  wall: '#0d6b54',
+  crate: '#2f8f4e',
+  pillar: '#41a064',
+  ramp: '#6d56a8',
+  t: '#f28c28',
+  ct: '#3d8bff',
+  site: '#e04b3f'
+};
+
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = Math.floor(innerWidth * dpr);
+  canvas.height = Math.floor(innerHeight * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  draw();
+}
+
+function bounds() {
+  const xs = [], zs = [];
+  for (const s of mapData.solids || []) { xs.push(s.min[0], s.max[0]); zs.push(s.min[2], s.max[2]); }
+  for (const r of mapData.ramps || []) { xs.push(r.min[0], r.max[0]); zs.push(r.min[2], r.max[2]); }
+  for (const team of Object.values(mapData.spawns || {})) for (const p of team) { xs.push(p[0]); zs.push(p[2]); }
+  for (const site of mapData.bombsites || []) { xs.push(site.min[0], site.max[0]); zs.push(site.min[1], site.max[1]); }
+  return [Math.min(...xs), Math.min(...zs), Math.max(...xs), Math.max(...zs)];
+}
+
+function fit() {
+  const [minX, minZ, maxX, maxZ] = bounds();
+  const pad = 48;
+  scale = Math.min((innerWidth - pad * 2) / (maxX - minX || 1), (innerHeight - pad * 2) / (maxZ - minZ || 1));
+  offsetX = (innerWidth - (maxX - minX) * scale) / 2 - minX * scale;
+  offsetY = (innerHeight - (maxZ - minZ) * scale) / 2 - minZ * scale;
+  draw();
+}
+
+function sx(x) { return x * scale + offsetX; }
+function sy(z) { return z * scale + offsetY; }
+
+function color(value, fallback) {
+  return Number.isInteger(value) ? `#${(value & 0xffffff).toString(16).padStart(6, '0')}` : fallback;
+}
+
+function isRoof(s) {
+  if (s.type !== 'wall') return false;
+  const dx = s.max[0] - s.min[0];
+  const dy = s.max[1] - s.min[1];
+  const dz = s.max[2] - s.min[2];
+  return dy > 0 && dy <= 48 && dx >= 1 && dz >= 1;
+}
+
+function rect(minX, minZ, maxX, maxZ, fill, alpha = 1, stroke = null) {
+  const x = sx(minX), y = sy(minZ), w = (maxX - minX) * scale, h = (maxZ - minZ) * scale;
+  ctx.globalAlpha = alpha;
+  if (fill) { ctx.fillStyle = fill; ctx.fillRect(x, y, w, h); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 2; ctx.strokeRect(x, y, w, h); }
+  ctx.globalAlpha = 1;
+}
+
+function draw() {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  ctx.fillStyle = '#10243a';
+  ctx.fillRect(0, 0, innerWidth, innerHeight);
+  for (const s of mapData.solids || []) {
+    if (s.type === 'floor' && layers.floor) rect(s.min[0], s.min[2], s.max[0], s.max[2], color(s.color, colors.floor), .72);
+  }
+  for (const s of mapData.solids || []) {
+    if (s.type === 'wall' && !isRoof(s) && layers.wall) rect(s.min[0], s.min[2], s.max[0], s.max[2], color(s.color, colors.wall), .9);
+  }
+  for (const r of mapData.ramps || []) {
+    if (layers.floor) rect(r.min[0], r.min[2], r.max[0], r.max[2], color(r.color, colors.ramp), .78, colors.ramp);
+  }
+  for (const s of mapData.solids || []) {
+    if (isRoof(s) && layers.roof) rect(s.min[0], s.min[2], s.max[0], s.max[2], color(s.color, colors.wall), .18, '#f4f1dd');
+  }
+  for (const s of mapData.solids || []) {
+    if ((s.type === 'crate' || s.type === 'pillar') && layers.asset) rect(s.min[0], s.min[2], s.max[0], s.max[2], color(s.color, colors[s.type]), .9);
+  }
+  if (layers.site) {
+    for (const site of mapData.bombsites || []) {
+      rect(site.min[0], site.min[1], site.max[0], site.max[1], null, 1, colors.site);
+      ctx.fillStyle = colors.site;
+      ctx.fillText(site.name || '?', sx(site.min[0]) + 5, sy(site.min[1]) + 15);
+    }
+  }
+  if (layers.spawn) {
+    for (const [team, points] of Object.entries(mapData.spawns || {})) {
+      ctx.fillStyle = colors[team] || '#fff';
+      for (const p of points) {
+        ctx.beginPath();
+        ctx.arc(sx(p[0]), sy(p[2]), 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+  const counts = (mapData.solids || []).reduce((acc, s) => {
+    const key = isRoof(s) ? 'roof' : s.type;
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+  stats.textContent = `solids: ${(mapData.solids || []).length}\nfloor: ${counts.floor || 0}\nwall: ${counts.wall || 0}\nroof: ${counts.roof || 0}\ncrate: ${counts.crate || 0}\npillar: ${counts.pillar || 0}\nramps: ${(mapData.ramps || []).length}`;
+}
+
+document.querySelectorAll('[data-layer]').forEach(input => input.addEventListener('change', e => {
+  layers[e.target.dataset.layer] = e.target.checked;
+  draw();
+}));
+document.getElementById('fit').addEventListener('click', fit);
+canvas.addEventListener('mousedown', e => { dragging = true; lastX = e.clientX; lastY = e.clientY; canvas.classList.add('dragging'); });
+addEventListener('mouseup', () => { dragging = false; canvas.classList.remove('dragging'); });
+addEventListener('mousemove', e => {
+  if (!dragging) return;
+  offsetX += e.clientX - lastX;
+  offsetY += e.clientY - lastY;
+  lastX = e.clientX;
+  lastY = e.clientY;
+  draw();
+});
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  const factor = e.deltaY < 0 ? 1.1 : 0.9;
+  const mx = e.clientX, my = e.clientY;
+  offsetX = mx - (mx - offsetX) * factor;
+  offsetY = my - (my - offsetY) * factor;
+  scale *= factor;
+  draw();
+}, { passive: false });
+addEventListener('resize', resize);
+resize();
+fit();
+</script>
+</body>
+</html>

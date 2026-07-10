@@ -1,0 +1,242 @@
+{
+  "source_bsp": "source/de_mirage_csgo/de_mirage_csgo.bsp",
+  "source_extracted_dir": "build/de_mirage_csgo/extracted",
+  "coordinate_transform": "source [x,y,z] -> js [x,z,y]",
+  "note": "Convex BSP brushes were approximated as axis-aligned boxes or one-axis ramps. Props were intentionally omitted.",
+  "parameters": {
+    "scale": 1.0,
+    "include_spawn_yaw": false
+  },
+  "output_counts": {
+    "solids": 4553,
+    "ramps": 1620,
+    "t_spawns": 17,
+    "ct_spawns": 14,
+    "bombsites": 2,
+    "ladders": 3
+  },
+  "spawn_yaws": {
+    "t": [
+      227,
+      227,
+      141,
+      141,
+      227,
+      227,
+      227,
+      141,
+      141,
+      90,
+      90,
+      270,
+      270,
+      270,
+      270,
+      90,
+      90
+    ],
+    "ct": [
+      331,
+      0,
+      0,
+      36,
+      0,
+      0,
+      0,
+      270,
+      306,
+      0,
+      50,
+      94,
+      299,
+      288
+    ]
+  },
+  "brush_conversion": {
+    "brush_count": 7063,
+    "converted": {
+      "solids": 4553,
+      "skipped_material": 890,
+      "ramps": 1620
+    },
+    "top_materials": [
+      {
+        "material": "DE_DUST/SITEBWALL13A",
+        "count": 1572
+      },
+      {
+        "material": "CS_ITALY/HPE_PLASTER_TAN_WALL",
+        "count": 516
+      },
+      {
+        "material": "TOOLS/TOOLSCLIP",
+        "count": 435
+      },
+      {
+        "material": "WOOD/WOODFLOOR005A",
+        "count": 366
+      },
+      {
+        "material": "DE_MIRAGE/BASE/DE_MIRAGE_TOP_VER1_DIFFUSE",
+        "count": 301
+      },
+      {
+        "material": "DE_DUST/RESIDWALL04A",
+        "count": 289
+      },
+      {
+        "material": "DE_MIRAGE/BRICK/DE_MIRAGE_BRICK_VER1_DIFFUSE",
+        "count": 240
+      },
+      {
+        "material": "DE_MIRAGE/BASE/DE_MIRAGE_MID_VER1_DIFFUSE",
+        "count": 226
+      },
+      {
+        "material": "DE_DUST/DUSANDWLLTRIM3",
+        "count": 218
+      },
+      {
+        "material": "DE_MIRAGE/PLASTER_WORN/DE_MIRAGE_PLASTER_BRICK4_DIFFUSE",
+        "count": 213
+      },
+      {
+        "material": "BRICK/BRICK_EXT_04",
+        "count": 201
+      },
+      {
+        "material": "DE_DUST/SITEBWALL08A",
+        "count": 156
+      },
+      {
+        "material": "DE_MIRAGE/WOOD/DE_MIRAGE_WOOD_VER3_DIFFUSE",
+        "count": 152
+      },
+      {
+        "material": "CS_ITALY/HPE_PLASTER_YELLOW_WALL",
+        "count": 127
+      },
+      {
+        "material": "DE_DUST/STONESTEP03",
+        "count": 120
+      },
+      {
+        "material": "DE_DUST/DUTILE1",
+        "count": 114
+      },
+      {
+        "material": "WOOD/MILBEAMS003",
+        "count": 81
+      },
+      {
+        "material": "DE_DUST/MARKETWALL02",
+        "count": 69
+      },
+      {
+        "material": "DE_MIRAGE/PLASTER/DE_MIRAGE_PLASTER_SALMON1_DIFFUSE",
+        "count": 64
+      },
+      {
+        "material": "DE_DUST/TILEFLOOR01",
+        "count": 63
+      },
+      {
+        "material": "DE_MIRAGE/PLASTER/DE_MIRAGE_PLASTER_BLUE1_DIFFUSE",
+        "count": 44
+      },
+      {
+        "material": "DE_DUST/MARKETWALL05A",
+        "count": 41
+      },
+      {
+        "material": "DE_DUST/STONESTEP04",
+        "count": 40
+      },
+      {
+        "material": "CS_ITALY/PLASTERWALL04",
+        "count": 38
+      },
+      {
+        "material": "WOOD/WOOD_INT_02",
+        "count": 33
+      },
+      {
+        "material": "CS_ITALY/TILEROOF01",
+        "count": 30
+      },
+      {
+        "material": "CS_ITALY/HPE_PLASTER_TINT_TAN",
+        "count": 29
+      },
+      {
+        "material": "DE_MIRAGE/TILE/DE_MIRAGE_TILE_VER4_DIFFUSE",
+        "count": 25
+      },
+      {
+        "material": "DE_NUKE/NUKE_METALTRIMS_01",
+        "count": 21
+      },
+      {
+        "material": "PLASTER/PLASTER_INT_02",
+        "count": 20
+      },
+      {
+        "material": "DE_DUST/STONESTEP02",
+        "count": 18
+      },
+      {
+        "material": "WOOD/WOOD_DOCK_PYLON_01",
+        "count": 17
+      },
+      {
+        "material": "METAL/METALTRACK001A",
+        "count": 16
+      },
+      {
+        "material": "WOOD/WOODTRIM_EXT_01",
+        "count": 15
+      },
+      {
+        "material": "WOOD/MILSTEPS001",
+        "count": 14
+      },
+      {
+        "material": "DE_DUST/SITEBWALL07A",
+        "count": 13
+      },
+      {
+        "material": "EFFECTS/METALRAIL011A",
+        "count": 13
+      },
+      {
+        "material": "WOOD/WOODSTEPS001",
+        "count": 13
+      },
+      {
+        "material": "WOOD/PLYWOOD02",
+        "count": 13
+      },
+      {
+        "material": "WOOD/WOODBEAM001A",
+        "count": 12
+      }
+    ]
+  },
+  "engine_runtime": {
+    "theme": "sand",
+    "buyzone_padding": 300.0,
+    "bounds": {
+      "min": [
+        -5096,
+        -1160,
+        -4864
+      ],
+      "max": [
+        2832,
+        1824,
+        3048
+      ]
+    },
+    "nav_source": "server_generated"
+  }
+}
