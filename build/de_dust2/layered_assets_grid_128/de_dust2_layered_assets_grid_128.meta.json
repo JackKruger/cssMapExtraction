@@ -1,0 +1,377 @@
+{
+  "source_bsp": "source/de_dust2/de_dust2_unlimited.bsp",
+  "source_nav": "source/de_dust2/de_dust2_unlimited.nav",
+  "source_extracted_dir": "build/de_dust2/extracted",
+  "coordinate_transform": "source [x,y,z] -> layered js [x,z,y]",
+  "note": "Nav areas are quantized into height layers; auto slope mode uses stairs only within the game hull limits and otherwise emits walkable one-axis ramps.",
+  "parameters": {
+    "scale": 1.0,
+    "color_mode": "auto",
+    "nav_cell_size": 128,
+    "height_step": 64.0,
+    "floor_thickness": 24.0,
+    "wall_height": 144.0,
+    "min_ground_y": 128.0,
+    "vertical_offset": 320.0,
+    "kill_y_below_ground": 64.0,
+    "spawn_height": 48.0,
+    "roof_enabled": false,
+    "roof_height": 144.0,
+    "roof_thickness": 32.0,
+    "roof_padding": 0.0,
+    "wall_thickness": 24.0,
+    "min_wall_length": 64.0,
+    "min_wall_opening": 32.0,
+    "spawn_wall_clearance": 16.0,
+    "ramp_wall_clearance": 128.0,
+    "ramp_min_rise": 28.0,
+    "ramp_max_rise": 192.0,
+    "slope_mode": "auto",
+    "stair_step_height": 16.0,
+    "stair_min_steps": 2,
+    "stair_max_steps": 16,
+    "stair_min_tread_depth": 32.0,
+    "stair_side_walls": false,
+    "player_height": 72.0,
+    "player_step_height": 18.0,
+    "walls_enabled": true,
+    "foundation_enabled": true,
+    "global_containment_walls_enabled": true,
+    "containment_seal_walls_enabled": true,
+    "containment_seal_grid_size": 64.0,
+    "containment_seal_edge_depth": 16.0,
+    "containment_seal_wall_thickness": 16.0,
+    "assets_enabled": true,
+    "asset_source": "both",
+    "asset_density": "medium",
+    "asset_types": [
+      "crate"
+    ],
+    "asset_bounds": "auto",
+    "asset_height_tolerance": 96.0,
+    "asset_height_search_distance": 128.0,
+    "spawn_clearance": 48.0,
+    "player_radius": 16.0,
+    "max_asset_nav_cells": 6,
+    "static_asset_limit": 120
+  },
+  "output_counts": {
+    "layers": 9,
+    "floor_rects": 143,
+    "foundation_floor_rects": 59,
+    "wall_rects": 175,
+    "global_wall_rects": 170,
+    "seal_wall_rects": 0,
+    "roof_rects": 0,
+    "stair_solids": 80,
+    "stair_side_walls": 0,
+    "stair_roofs": 0,
+    "asset_solids": 140,
+    "wall_rects_removed_for_spawn_clearance": 3,
+    "wall_rects_removed_for_ramp_clearance": 272,
+    "global_wall_rects_removed_for_spawn_clearance": 0,
+    "seal_wall_rects_removed_for_spawn_clearance": 0,
+    "stair_side_walls_removed_for_spawn_clearance": 0,
+    "solids": 767,
+    "ramps": 157,
+    "t_spawns": 27,
+    "ct_spawns": 26,
+    "bombsites": 2
+  },
+  "spawn_yaws": {
+    "t": [
+      159,
+      10,
+      356,
+      0,
+      140,
+      140,
+      156,
+      140,
+      356,
+      0,
+      356,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      356,
+      356,
+      156,
+      0,
+      0,
+      0,
+      0,
+      140,
+      140,
+      170
+    ],
+    "ct": [
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      180,
+      180,
+      0,
+      0,
+      222,
+      222,
+      324,
+      324,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255
+    ]
+  },
+  "colors": {
+    "palette": {
+      "floor": 10654069,
+      "wall": 11112816,
+      "roof": 8614748,
+      "crate": 9265209,
+      "pillar": 8225400,
+      "ramp": 10125414
+    },
+    "hex": {
+      "floor": "#a29175",
+      "wall": "#a99170",
+      "roof": "#83735c",
+      "crate": "#8d6039",
+      "pillar": "#7d8278",
+      "ramp": "#9a8066"
+    },
+    "inference": {
+      "mode": "auto",
+      "samples": {
+        "floor": 2045,
+        "wall": 7567,
+        "roof": 838
+      },
+      "top_materials": {
+        "floor": [
+          {
+            "material": "DE_DUST/RESIDWALL01A",
+            "weight": 2377
+          },
+          {
+            "material": "DE_DUST/RESIDWALL01",
+            "weight": 1121
+          },
+          {
+            "material": "DE_DUST/TILEFLOOR01",
+            "weight": 680
+          },
+          {
+            "material": "DE_DUST/SITEBWALL13",
+            "weight": 490
+          },
+          {
+            "material": "DE_DUST/GROUNDSAND_BLEND",
+            "weight": 360
+          },
+          {
+            "material": "DE_DUST/STONESTEP04",
+            "weight": 352
+          },
+          {
+            "material": "DE_DUST/SITEBWALL05",
+            "weight": 264
+          },
+          {
+            "material": "DE_DUST/STONESTEP01",
+            "weight": 260
+          }
+        ],
+        "wall": [
+          {
+            "material": "DE_DUST/TEMPLEWALL03",
+            "weight": 3221
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL04",
+            "weight": 2673
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL04A",
+            "weight": 2001
+          },
+          {
+            "material": "DE_DUST/STONEWALL02A",
+            "weight": 1985
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL03B",
+            "weight": 1724
+          },
+          {
+            "material": "DE_DUST/RESIDBWALL01",
+            "weight": 1627
+          },
+          {
+            "material": "CONCRETE/CONCRETEWALL034A",
+            "weight": 1400
+          },
+          {
+            "material": "DE_DUST/RESIDWALL01",
+            "weight": 1269
+          }
+        ],
+        "roof": [
+          {
+            "material": "DE_DUST/RESIDBWALL01",
+            "weight": 892
+          },
+          {
+            "material": "DE_DUST/TEMPLEWALL03",
+            "weight": 865
+          },
+          {
+            "material": "DE_DUST/RESIDWALL01",
+            "weight": 560
+          },
+          {
+            "material": "STONE/INFTRIMA",
+            "weight": 450
+          },
+          {
+            "material": "DE_DUST/SITEBWALL13",
+            "weight": 315
+          },
+          {
+            "material": "DE_DUST/RESIDWALL01A",
+            "weight": 292
+          },
+          {
+            "material": "DE_CHATEAU/WOODM",
+            "weight": 140
+          },
+          {
+            "material": "DE_DUST/SITEBWALL11",
+            "weight": 108
+          }
+        ]
+      }
+    }
+  },
+  "assets": {
+    "entities": {
+      "count": 24,
+      "top_models": [
+        {
+          "model": "models/props_junk/PlasticCrate01a.mdl",
+          "bounds_source": "heuristic",
+          "count": 10
+        },
+        {
+          "model": "models/props_junk/plasticbucket001a.mdl",
+          "bounds_source": "heuristic",
+          "count": 9
+        },
+        {
+          "model": "models/props_junk/CinderBlock01a.mdl",
+          "bounds_source": "heuristic",
+          "count": 3
+        },
+        {
+          "model": "models/props_junk/metal_paintcan001a.mdl",
+          "bounds_source": "heuristic",
+          "count": 1
+        },
+        {
+          "model": "models/props_junk/MetalBucket01a.mdl",
+          "bounds_source": "heuristic",
+          "count": 1
+        }
+      ],
+      "skipped": {
+        "unmatched_model": 115
+      }
+    },
+    "static": {
+      "count": 116,
+      "top_models": [
+        {
+          "model": "models/props/de_dust/du_crate_64x64.mdl",
+          "bounds_source": "heuristic",
+          "count": 65
+        },
+        {
+          "model": "models/props/de_dust/stoneblock01a.mdl",
+          "bounds_source": "heuristic",
+          "count": 26
+        },
+        {
+          "model": "models/props/de_dust/du_crate_96x96.mdl",
+          "bounds_source": "heuristic",
+          "count": 19
+        },
+        {
+          "model": "models/props/de_dust/stoneblocks48.mdl",
+          "bounds_source": "heuristic",
+          "count": 4
+        },
+        {
+          "model": "models/props/de_dust/du_crate_128x128.mdl",
+          "bounds_source": "heuristic",
+          "count": 2
+        }
+      ],
+      "skipped": {
+        "height_mismatch": 237,
+        "outside_nav": 64,
+        "unmatched_model": 59,
+        "outside_layer": 1
+      }
+    }
+  },
+  "nav": {
+    "path": "source/de_dust2/de_dust2_unlimited.nav",
+    "version": 9,
+    "subversion": 0,
+    "area_count": 1405
+  },
+  "conversion": {
+    "floor_areas": 1227,
+    "stair_areas": 21,
+    "ramp_areas": 178,
+    "walkable_ramp_areas": 157,
+    "unplayable_stair_fallbacks": 157
+  },
+  "global_containment": {
+    "min_y": 104,
+    "max_y": 848,
+    "structural_wall_base_y": 104,
+    "foundation_top_y": 128
+  },
+  "engine_runtime": {
+    "theme": "sand",
+    "buyzone_padding": 300.0,
+    "bounds": {
+      "min": [
+        -3584,
+        -136,
+        -2048
+      ],
+      "max": [
+        2944,
+        1648,
+        5376
+      ]
+    },
+    "nav_source": "server_generated"
+  }
+}

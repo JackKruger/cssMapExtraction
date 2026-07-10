@@ -1,0 +1,265 @@
+{
+  "source_bsp": "source/de_dust2/de_dust2_unlimited.bsp",
+  "source_extracted_dir": "build/de_dust2/extracted",
+  "coordinate_transform": "source [x,y,z] -> js [x,z,y]",
+  "note": "Convex BSP brushes were approximated as axis-aligned boxes or one-axis ramps. Props were intentionally omitted.",
+  "parameters": {
+    "scale": 1.0,
+    "include_spawn_yaw": false
+  },
+  "output_counts": {
+    "solids": 2193,
+    "ramps": 1086,
+    "t_spawns": 27,
+    "ct_spawns": 26,
+    "bombsites": 2,
+    "ladders": 2
+  },
+  "spawn_yaws": {
+    "t": [
+      159,
+      10,
+      356,
+      0,
+      140,
+      140,
+      156,
+      140,
+      356,
+      0,
+      356,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      356,
+      356,
+      156,
+      0,
+      0,
+      0,
+      0,
+      140,
+      140,
+      170
+    ],
+    "ct": [
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      180,
+      180,
+      0,
+      0,
+      222,
+      222,
+      324,
+      324,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255
+    ]
+  },
+  "brush_conversion": {
+    "brush_count": 3527,
+    "converted": {
+      "solids": 2193,
+      "skipped_material": 247,
+      "ramps": 1086,
+      "skipped_degenerate": 1
+    },
+    "top_materials": [
+      {
+        "material": "DE_DUST/RESIDBWALL01",
+        "count": 470
+      },
+      {
+        "material": "DE_DUST/RESIDWALL01A",
+        "count": 398
+      },
+      {
+        "material": "DE_DUST/RESIDWALL01",
+        "count": 333
+      },
+      {
+        "material": "DE_DUST/SITEBWALL01A",
+        "count": 324
+      },
+      {
+        "material": "DE_DUST/STONEWALL02C",
+        "count": 128
+      },
+      {
+        "material": "CONCRETE/CONCRETEWALL034A",
+        "count": 117
+      },
+      {
+        "material": "CS_HAVANA/WHITE",
+        "count": 104
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL03",
+        "count": 90
+      },
+      {
+        "material": "DE_DUST/DUSANDCRETE",
+        "count": 86
+      },
+      {
+        "material": "BRICK/BRICKWALL026D",
+        "count": 86
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL03B",
+        "count": 62
+      },
+      {
+        "material": "TOOLS/TOOLSCLIP",
+        "count": 58
+      },
+      {
+        "material": "DE_DUST/DUTILE1",
+        "count": 56
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL01B",
+        "count": 53
+      },
+      {
+        "material": "DE_DUST/DOOR04",
+        "count": 49
+      },
+      {
+        "material": "DE_DUST/RESIDWALL01B",
+        "count": 45
+      },
+      {
+        "material": "DE_DUST/STONESTEP02",
+        "count": 44
+      },
+      {
+        "material": "DE_CHATEAU/WOODM",
+        "count": 39
+      },
+      {
+        "material": "DE_DUST/RESIDWALL04",
+        "count": 38
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL04A",
+        "count": 37
+      },
+      {
+        "material": "DE_DUST/STONESTEP01",
+        "count": 35
+      },
+      {
+        "material": "BRICK/BRICKWALL037D",
+        "count": 30
+      },
+      {
+        "material": "DE_DUST/GROUNDSAND_BLEND",
+        "count": 27
+      },
+      {
+        "material": "CS_ITALY/WFLOOR-SN01A",
+        "count": 25
+      },
+      {
+        "material": "DEV/DEV_MEASURESTAIRS01A",
+        "count": 24
+      },
+      {
+        "material": "DE_DUST/SITEBWALL11",
+        "count": 23
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL04B",
+        "count": 23
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL03B",
+        "count": 22
+      },
+      {
+        "material": "DEV/VALUE30",
+        "count": 21
+      },
+      {
+        "material": "DE_DUST/DOOR011",
+        "count": 20
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL04",
+        "count": 20
+      },
+      {
+        "material": "DE_DUST/TEMPLEWALL02A",
+        "count": 19
+      },
+      {
+        "material": "DE_DUST/SITEBWALL01",
+        "count": 19
+      },
+      {
+        "material": "BRICK/BRICKWALL027A",
+        "count": 18
+      },
+      {
+        "material": "WOOD/WOODSHUTTERS001A",
+        "count": 18
+      },
+      {
+        "material": "DE_DUST/RESIDBWALL02A",
+        "count": 16
+      },
+      {
+        "material": "DE_DUST/MARKETWALL02B",
+        "count": 16
+      },
+      {
+        "material": "DE_DUST/STONESTEP04",
+        "count": 15
+      },
+      {
+        "material": "DE_DUST/SITEBWALL03B",
+        "count": 14
+      },
+      {
+        "material": "DE_DUST/RESIDWALL02",
+        "count": 13
+      }
+    ]
+  },
+  "engine_runtime": {
+    "theme": "sand",
+    "buyzone_padding": 300.0,
+    "bounds": {
+      "min": [
+        -4168,
+        -1304,
+        -2728
+      ],
+      "max": [
+        11215,
+        2738.5,
+        5828
+      ]
+    },
+    "nav_source": "server_generated"
+  }
+}
